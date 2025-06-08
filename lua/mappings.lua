@@ -2,35 +2,24 @@
 
 local map = vim.keymap.set
 
--- Disable the spacebar key's default behavior in Normal and Visual modes
+-- NOTE: Disable the spacebar key's default behavior in Normal and Visual modes
 map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
--- For conciseness
--- local opts = { noremap = true, silent = true }
-
+-- NOTE: For conciseness
 local function opts(desc)
   return { noremap = true, silent = true, desc = desc }
 end
 
--- local function opts(desc)
---     return { noremap = true, silent = true, desc = "LSP " .. desc }
---   end
-
--- map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
--- map("i", "<C-e>", "<End>", { desc = "move end of line" })
-
--- map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
--- map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
-map('n', '<leader>ch', '<cmd>NvCheatsheet<CR>', { desc = 'toggle nvcheatsheet' })
+map('n', '<leader>cs', '<cmd>NvCheatsheet<CR>', { desc = 'Toggle Nv[C]heat[S]heet' })
 
 map({ 'n', 'x' }, '<leader>fm', function()
   require('conform').format { async = true, lsp_format = 'fallback', lsp_fallback = true }
 end, { desc = 'general format file' })
 
--- global lsp mappings
+-- NOTE: global lsp mappings
 map('n', '<leader>ds', vim.diagnostic.setloclist, { desc = 'LSP diagnostic loclist' })
 
--- tabufline
+-- NOTE: tabufline
 map('n', '<leader>b', '<cmd>enew<CR>', { desc = 'buffer new' })
 
 map('n', '<tab>', function()
@@ -45,15 +34,15 @@ map('n', '<leader>x', function()
   require('nvchad.tabufline').close_buffer()
 end, { desc = 'buffer close' })
 
--- -- Comment
+-- NOTE: Comment
 -- map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 -- map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
--- nvimtree
+-- NOTE: nvimtree
 -- map('n', '<C-n>', '<cmd>NvimTreeToggle<CR>', { desc = 'nvimtree toggle window' })
 map('n', '<leader>e', '<cmd>NvimTreeFocus<CR>', { desc = 'nvimtree focus window' })
 
--- -- telescope
+-- NOTE: telescope
 local builtin = require 'telescope.builtin'
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
@@ -66,7 +55,7 @@ vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' }
 vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
--- Slightly advanced example of overriding default behavior and theme
+-- NOTE: Slightly advanced example of overriding default behavior and theme
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to Telescope to change the theme, layout, etc.
   builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -82,7 +71,7 @@ vim.keymap.set('n', '<leader>s/', function()
   }
 end, { desc = '[S]earch [/] in Open Files' })
 
--- Shortcut for searching your Neovim configuration files
+-- NOTE: Shortcut for searching your Neovim configuration files
 vim.keymap.set('n', '<leader>sn', function()
   builtin.find_files { cwd = vim.fn.stdpath 'config' }
 end, { desc = '[S]earch [N]eovim files' })
@@ -115,10 +104,10 @@ end, { desc = 'NvChad [T][H]emes' })
 --   { desc = "find all files" }
 -- )
 
--- terminal
+-- NOTE: terminal
 map('t', '<C-x>', '<C-\\><C-N>', { desc = 'terminal escape terminal mode' })
 
--- new terminals
+-- NOTE: new terminals
 map('n', '<leader>h', function()
   require('nvchad.term').new { pos = 'sp' }
 end, { desc = 'terminal new horizontal term' })
@@ -127,7 +116,7 @@ map('n', '<leader>v', function()
   require('nvchad.term').new { pos = 'vsp' }
 end, { desc = 'terminal new vertical term' })
 --
--- toggleable
+-- NOTE: toggleable
 map({ 'n', 't' }, '<A-v>', function()
   require('nvchad.term').toggle { pos = 'vsp', id = 'vtoggleTerm' }
 end, { desc = 'terminal toggleable vertical term' })
@@ -140,7 +129,7 @@ map({ 'n', 't' }, '<A-i>', function()
   require('nvchad.term').toggle { pos = 'float', id = 'floatTerm' }
 end, { desc = 'terminal toggle floating term' })
 
--- whichkey
+-- NOTE: whichkey
 map('n', '<leader>wK', '<cmd>WhichKey <CR>', { desc = 'whichkey all keymaps' })
 
 map('n', '<leader>wk', function()
@@ -152,23 +141,23 @@ end, { desc = 'whichkey query lookup' })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
--- save file
+-- NOTE: save file
 map('n', '<C-s>', '<cmd> w <CR>', opts 'Save File')
 
--- save file without auto-formatting
+-- NOTE: save file without auto-formatting
 map('n', '<leader><C-s>n', '<cmd>noautocmd w <CR>', opts 'Save with [N]o Formatting')
 --
--- quit file
+-- NOTE: quit file
 map('n', '<C-q>', '<cmd> q <CR>', opts 'Quit File')
 
--- delete single character without copying into register
+-- NOTE: delete single character without copying into register
 map('n', 'x', '"_x', opts 'Single delete [no register]')
 
--- Vertical scroll and center
+-- NOTE: Vertical scroll and center
 map('n', '<C-d>', '<C-d>zz', opts())
 map('n', '<C-u>', '<C-u>zz', opts())
 
--- Find and center
+-- NOTE: Find and center
 map('n', 'n', 'nzzzv', opts())
 map('n', 'N', 'Nzzzv', opts())
 -- Clear highlights on search when pressing <Esc> in normal mode
@@ -190,6 +179,12 @@ map('n', '<C-h>', ':wincmd h<CR>', opts())
 map('n', '<C-l>', ':wincmd l<CR>', opts())
 map('n', '<C-j>', ':wincmd j<CR>', opts())
 map('n', '<C-k>', ':wincmd k<CR>', opts())
+
+-- NOTE: Navigate between splits with arrow keys
+map('n', '<C-left>', ':wincmd h<CR>', opts())
+map('n', '<C-right>', ':wincmd l<CR>', opts())
+map('n', '<C-up>', ':wincmd j<CR>', opts())
+map('n', '<C-down>', ':wincmd k<CR>', opts())
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
