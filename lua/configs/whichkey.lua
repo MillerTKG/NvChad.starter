@@ -1,5 +1,5 @@
 -- require('nvchad.configs.lspconfig').defaults()
--- require 'nvchad.configs.whichkey'
+require 'nvchad.configs.whichkey'
 --
 -- local M = {}
 --
