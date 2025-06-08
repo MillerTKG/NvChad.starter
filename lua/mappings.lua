@@ -6,7 +6,15 @@ local map = vim.keymap.set
 map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- For conciseness
-local opts = { noremap = true, silent = true }
+-- local opts = { noremap = true, silent = true }
+
+local function opts(desc)
+  return { noremap = true, silent = true, desc = desc }
+end
+
+-- local function opts(desc)
+--     return { noremap = true, silent = true, desc = "LSP " .. desc }
+--   end
 
 -- map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
 -- map("i", "<C-e>", "<End>", { desc = "move end of line" })
@@ -145,24 +153,24 @@ end, { desc = 'whichkey query lookup' })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 -- save file
-map('n', '<C-s>', '<cmd> w <CR>', opts)
+map('n', '<C-s>', '<cmd> w <CR>', opts 'Save File')
 
 -- save file without auto-formatting
-map('n', '<leader><C-s>n', '<cmd>noautocmd w <CR>', opts and { desc = 'Save with [N]o Formatting' })
+map('n', '<leader><C-s>n', '<cmd>noautocmd w <CR>', opts 'Save with [N]o Formatting')
 --
 -- quit file
-map('n', '<C-q>', '<cmd> q <CR>', opts)
+map('n', '<C-q>', '<cmd> q <CR>', opts 'Quit File')
 
 -- delete single character without copying into register
-map('n', 'x', '"_x', opts)
+map('n', 'x', '"_x', opts 'Single delete [no register]')
 
 -- Vertical scroll and center
-map('n', '<C-d>', '<C-d>zz', opts)
-map('n', '<C-u>', '<C-u>zz', opts)
+map('n', '<C-d>', '<C-d>zz', opts())
+map('n', '<C-u>', '<C-u>zz', opts())
 
 -- Find and center
-map('n', 'n', 'nzzzv', opts)
-map('n', 'N', 'Nzzzv', opts)
+map('n', 'n', 'nzzzv', opts())
+map('n', 'N', 'Nzzzv', opts())
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 map('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -178,10 +186,10 @@ map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- NOTE: Navigate between splits
-map('n', '<C-h>', ':wincmd h<CR>', opts)
-map('n', '<C-l>', ':wincmd l<CR>', opts)
-map('n', '<C-j>', ':wincmd j<CR>', opts)
-map('n', '<C-k>', ':wincmd k<CR>', opts)
+map('n', '<C-h>', ':wincmd h<CR>', opts())
+map('n', '<C-l>', ':wincmd l<CR>', opts())
+map('n', '<C-j>', ':wincmd j<CR>', opts())
+map('n', '<C-k>', ':wincmd k<CR>', opts())
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
