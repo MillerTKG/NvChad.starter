@@ -49,6 +49,8 @@ end)
 vim.o.autoindent = true
 vim.o.smartindent = true
 vim.o.breakindent = true
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
 
 -- NOTE: File Rules
 vim.opt.undofile = true

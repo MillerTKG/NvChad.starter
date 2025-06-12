@@ -7,13 +7,13 @@ map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- NOTE: For conciseness
 local function opts(desc)
-  return { noremap = true, silent = true, desc = desc }
+	return { noremap = true, silent = true, desc = desc }
 end
 
 map('n', '<leader>cs', '<cmd>NvCheatsheet<CR>', { desc = 'Toggle Nv[C]heat[S]heet' })
 
 map({ 'n', 'x' }, '<leader>fm', function()
-  require('conform').format({ async = true, lsp_format = 'fallback', lsp_fallback = true })
+	require('conform').format({ async = true, lsp_format = 'fallback', lsp_fallback = true })
 end, { desc = 'general format file' })
 
 -- NOTE: global lsp mappings
@@ -23,15 +23,15 @@ map('n', '<leader>ds', vim.diagnostic.setloclist, { desc = 'LSP diagnostic locli
 map('n', '<leader>b', '<cmd>enew<CR>', { desc = 'buffer new' })
 
 map('n', '<tab>', function()
-  require('nvchad.tabufline').next()
+	require('nvchad.tabufline').next()
 end, { desc = 'buffer goto next' })
 
 map('n', '<S-tab>', function()
-  require('nvchad.tabufline').prev()
+	require('nvchad.tabufline').prev()
 end, { desc = 'buffer goto prev' })
 
 map('n', '<leader>x', function()
-  require('nvchad.tabufline').close_buffer()
+	require('nvchad.tabufline').close_buffer()
 end, { desc = 'buffer close' })
 
 -- NOTE: Comment
@@ -57,23 +57,23 @@ vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find exis
 
 -- NOTE: Slightly advanced example of overriding default behavior and theme
 vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
-    winblend = 10,
-    previewer = false,
-  }))
+	-- You can pass additional configuration to Telescope to change the theme, layout, etc.
+	builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
+		winblend = 10,
+		previewer = false,
+	}))
 end, { desc = '[/] Fuzzily search in current buffer' })
 
 vim.keymap.set('n', '<leader>s/', function()
-  builtin.live_grep({
-    grep_open_files = true,
-    prompt_title = 'Live Grep in Open Files',
-  })
+	builtin.live_grep({
+		grep_open_files = true,
+		prompt_title = 'Live Grep in Open Files',
+	})
 end, { desc = '[S]earch [/] in Open Files' })
 
 -- NOTE: Shortcut for searching your Neovim configuration files
 vim.keymap.set('n', '<leader>sn', function()
-  builtin.find_files({ cwd = vim.fn.stdpath('config') })
+	builtin.find_files({ cwd = vim.fn.stdpath('config') })
 end, { desc = '[S]earch [N]eovim files' })
 
 -- map("n", "<leader>sh", "<cmd>Telescope help_tags<CR>", { desc = "help page" })
@@ -94,7 +94,7 @@ end, { desc = '[S]earch [N]eovim files' })
 
 -- map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "pick hidden term" })
 map('n', '<leader>th', function()
-  require('nvchad.themes').open()
+	require('nvchad.themes').open()
 end, { desc = 'NvChad [T][H]emes' })
 
 -- map(
@@ -109,31 +109,31 @@ map('t', '<C-x>', '<C-\\><C-N>', { desc = 'terminal escape terminal mode' })
 
 -- NOTE: new terminals
 map('n', '<leader>h', function()
-  require('nvchad.term').new({ pos = 'sp' })
+	require('nvchad.term').new({ pos = 'sp' })
 end, { desc = 'terminal new horizontal term' })
 
 map('n', '<leader>v', function()
-  require('nvchad.term').new({ pos = 'vsp' })
+	require('nvchad.term').new({ pos = 'vsp' })
 end, { desc = 'terminal new vertical term' })
 --
 -- NOTE: toggleable
 map({ 'n', 't' }, '<A-v>', function()
-  require('nvchad.term').toggle({ pos = 'vsp', id = 'vtoggleTerm' })
+	require('nvchad.term').toggle({ pos = 'vsp', id = 'vtoggleTerm' })
 end, { desc = 'terminal toggleable vertical term' })
 
 map({ 'n', 't' }, '<A-h>', function()
-  require('nvchad.term').toggle({ pos = 'sp', id = 'htoggleTerm' })
+	require('nvchad.term').toggle({ pos = 'sp', id = 'htoggleTerm' })
 end, { desc = 'terminal toggleable horizontal term' })
 
 map({ 'n', 't' }, '<A-i>', function()
-  require('nvchad.term').toggle({ pos = 'float', id = 'floatTerm' })
+	require('nvchad.term').toggle({ pos = 'float', id = 'floatTerm' })
 end, { desc = 'terminal toggle floating term' })
 
 -- NOTE: whichkey
 map('n', '<leader>wK', '<cmd>WhichKey <CR>', { desc = 'whichkey all keymaps' })
 
 map('n', '<leader>wk', function()
-  vim.cmd('WhichKey ' .. vim.fn.input('WhichKey: '))
+	vim.cmd('WhichKey ' .. vim.fn.input('WhichKey: '))
 end, { desc = 'whichkey query lookup' })
 
 -- map("n", ";", ":", { desc = "CMD enter command mode" })
