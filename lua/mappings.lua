@@ -34,6 +34,21 @@ map('n', '<leader>x', function()
 	require('nvchad.tabufline').close_buffer()
 end, { desc = 'buffer close' })
 
+map('n', '<leader>1', '<cmd>tabn 1<CR>', opts('Goto Tab 1'))
+map('n', '<leader>2', '<cmd>tabn 2<CR>', opts('Goto Tab 2'))
+map('n', '<leader>3', '<cmd>tabn 3<CR>', opts('Goto Tab 3'))
+map('n', '<leader>4', '<cmd>tabn 4<CR>', opts('Goto Tab 4'))
+map('n', '<leader>5', '<cmd>tabn 5<CR>', opts('Goto Tab 5'))
+-- map('n', '<leader>n', '<cmd>tabnr<CR>')
+
+-- NOTE: Navigate between tabs
+map('n', '<C-S-h>', '<cmd>-tabn<CR>', opts('Previous Tab'))
+map('n', '<C-S-l>', '<cmd>+tabn<CR>', opts('Next Tab'))
+
+-- NOTE: Navigate between tabs with arrow keys
+map('n', '<C-S-left>', ':wincmd h<CR>', opts('Previous Tab'))
+map('n', '<C-S-right>', ':wincmd l<CR>', opts('Next Tab'))
+
 -- NOTE: Comment
 -- map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 -- map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })

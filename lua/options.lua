@@ -9,15 +9,15 @@ require('nvchad.options')
 vim.g.have_nerd_font = true
 
 -- NOTE: Shell Options
-vim.o.shell = 'C:/Program Files/Git/bin/bash.exe'
-vim.o.shellcmdflag = '-s'
--- vim.o.shell = 'powershell'
--- vim.o.shellcmdflag =
---   '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
--- vim.o.shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
--- vim.o.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
--- vim.o.shellquote = ''
--- vim.o.shellxquote = ''
+-- vim.o.shell = 'C:/Program Files/Git/bin/bash.exe'
+-- vim.o.shellcmdflag = '-s'
+vim.o.shell = 'powershell'
+vim.o.shellcmdflag =
+	'-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+vim.o.shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+vim.o.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+vim.o.shellquote = ''
+vim.o.shellxquote = ''
 
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
