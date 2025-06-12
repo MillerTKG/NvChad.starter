@@ -1,4 +1,4 @@
-require 'nvchad.options'
+require('nvchad.options')
 
 -- [[ Setting options ]]
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)

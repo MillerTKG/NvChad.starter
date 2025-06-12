@@ -13,7 +13,7 @@ end
 map('n', '<leader>cs', '<cmd>NvCheatsheet<CR>', { desc = 'Toggle Nv[C]heat[S]heet' })
 
 map({ 'n', 'x' }, '<leader>fm', function()
-  require('conform').format { async = true, lsp_format = 'fallback', lsp_fallback = true }
+  require('conform').format({ async = true, lsp_format = 'fallback', lsp_fallback = true })
 end, { desc = 'general format file' })
 
 -- NOTE: global lsp mappings
@@ -43,7 +43,7 @@ end, { desc = 'buffer close' })
 map('n', '<leader>e', '<cmd>NvimTreeFocus<CR>', { desc = 'nvimtree focus window' })
 
 -- NOTE: telescope
-local builtin = require 'telescope.builtin'
+local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
 vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
@@ -58,22 +58,22 @@ vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find exis
 -- NOTE: Slightly advanced example of overriding default behavior and theme
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
     winblend = 10,
     previewer = false,
-  })
+  }))
 end, { desc = '[/] Fuzzily search in current buffer' })
 
 vim.keymap.set('n', '<leader>s/', function()
-  builtin.live_grep {
+  builtin.live_grep({
     grep_open_files = true,
     prompt_title = 'Live Grep in Open Files',
-  }
+  })
 end, { desc = '[S]earch [/] in Open Files' })
 
 -- NOTE: Shortcut for searching your Neovim configuration files
 vim.keymap.set('n', '<leader>sn', function()
-  builtin.find_files { cwd = vim.fn.stdpath 'config' }
+  builtin.find_files({ cwd = vim.fn.stdpath('config') })
 end, { desc = '[S]earch [N]eovim files' })
 
 -- map("n", "<leader>sh", "<cmd>Telescope help_tags<CR>", { desc = "help page" })
@@ -109,31 +109,31 @@ map('t', '<C-x>', '<C-\\><C-N>', { desc = 'terminal escape terminal mode' })
 
 -- NOTE: new terminals
 map('n', '<leader>h', function()
-  require('nvchad.term').new { pos = 'sp' }
+  require('nvchad.term').new({ pos = 'sp' })
 end, { desc = 'terminal new horizontal term' })
 
 map('n', '<leader>v', function()
-  require('nvchad.term').new { pos = 'vsp' }
+  require('nvchad.term').new({ pos = 'vsp' })
 end, { desc = 'terminal new vertical term' })
 --
 -- NOTE: toggleable
 map({ 'n', 't' }, '<A-v>', function()
-  require('nvchad.term').toggle { pos = 'vsp', id = 'vtoggleTerm' }
+  require('nvchad.term').toggle({ pos = 'vsp', id = 'vtoggleTerm' })
 end, { desc = 'terminal toggleable vertical term' })
 
 map({ 'n', 't' }, '<A-h>', function()
-  require('nvchad.term').toggle { pos = 'sp', id = 'htoggleTerm' }
+  require('nvchad.term').toggle({ pos = 'sp', id = 'htoggleTerm' })
 end, { desc = 'terminal toggleable horizontal term' })
 
 map({ 'n', 't' }, '<A-i>', function()
-  require('nvchad.term').toggle { pos = 'float', id = 'floatTerm' }
+  require('nvchad.term').toggle({ pos = 'float', id = 'floatTerm' })
 end, { desc = 'terminal toggle floating term' })
 
 -- NOTE: whichkey
 map('n', '<leader>wK', '<cmd>WhichKey <CR>', { desc = 'whichkey all keymaps' })
 
 map('n', '<leader>wk', function()
-  vim.cmd('WhichKey ' .. vim.fn.input 'WhichKey: ')
+  vim.cmd('WhichKey ' .. vim.fn.input('WhichKey: '))
 end, { desc = 'whichkey query lookup' })
 
 -- map("n", ";", ":", { desc = "CMD enter command mode" })
@@ -142,16 +142,16 @@ end, { desc = 'whichkey query lookup' })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 -- NOTE: save file
-map('n', '<C-s>', '<cmd> w <CR>', opts 'Save File')
+map('n', '<C-s>', '<cmd> w <CR>', opts('Save File'))
 
 -- NOTE: save file without auto-formatting
-map('n', '<leader><C-s>n', '<cmd>noautocmd w <CR>', opts 'Save with [N]o Formatting')
+map('n', '<leader><C-s>n', '<cmd>noautocmd w <CR>', opts('Save with [N]o Formatting'))
 --
 -- NOTE: quit file
-map('n', '<C-q>', '<cmd> q <CR>', opts 'Quit File')
+map('n', '<C-q>', '<cmd> q <CR>', opts('Quit File'))
 
 -- NOTE: delete single character without copying into register
-map('n', 'x', '"_x', opts 'Single delete [no register]')
+map('n', 'x', '"_x', opts('Single delete [no register]'))
 
 -- NOTE: Vertical scroll and center
 map('n', '<C-d>', '<C-d>zz', opts())
