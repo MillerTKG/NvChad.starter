@@ -4,7 +4,7 @@ vim.lsp.config('autohotkey_lsp', {
 	autostart = true,
 	cmd = {
 		'node',
-		vim.fn.expand('$HOME/vscode-autohotkey2-lsp/server/dist/server.js'),
+		vim.fn.expand('$HOME/.vscode/extensions/thqby.vscode-autohotkey2-lsp-2.6.9/server/dist/server.js'),
 		'--stdio',
 	},
 	filetypes = { 'ahk', 'autohotkey', 'ah2' },
@@ -33,7 +33,7 @@ vim.lsp.config('autohotkey_lsp', {
 			space_in_paren = false,
 			wrap_line_length = 0,
 		},
-		InterpreterPath = '',
+		InterpreterPath = 'C:/Program Files/AutoHotkey/v2/AutoHotkey.exe',
 		SymbolFoldinFromOpenBrace = false,
 		locale = 'en-us',
 	},
