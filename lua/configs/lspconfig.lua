@@ -10,21 +10,22 @@ vim.lsp.config('autohotkey_lsp', {
 	filetypes = { 'ahk', 'autohotkey', 'ah2' },
 	init_options = {
 		ActionWhenV1IsDetected = 'Continue',
-		AutoLibInclude = 'All',
+		AutoLibInclude = 'Local',
 		CommentTags = '^;;\\s*(?<tag>.+)',
-		CompleteFunctionParens = false,
+		CompleteFunctionParens = true,
+		fullySemanticToken = true,
 		Diagnostics = {
 			ClassStaticMemberCheck = true,
 			ParamsCheck = true,
 		},
 		FormatOptions = {
-			array_style = 'expand',
+			array_style = 'none',
 			brace_style = 'One True Brace',
 			break_chained_methods = false,
 			ignore_comment = false,
 			indent_string = '\t',
 			max_preserve_newlines = 2,
-			object_style = 'expand',
+			object_style = 'none',
 			preserve_newlines = true,
 			space_after_double_colon = true,
 			space_before_conditional = true,
@@ -34,7 +35,8 @@ vim.lsp.config('autohotkey_lsp', {
 			wrap_line_length = 0,
 		},
 		InterpreterPath = 'C:/Program Files/AutoHotkey/v2/AutoHotkey.exe',
-		SymbolFoldingFromOpenBrace = false,
+		SymbolFoldinFromOpenBrace = true,
+		SymbolFoldingFromOpenBrace = true,
 		locale = 'en-us',
 	},
 	single_file_support = true,
@@ -44,8 +46,8 @@ vim.lsp.config('autohotkey_lsp', {
 	root_markers = {
 		'package.json',
 	},
-	capabilities = require('nvchad.configs.lspconfig').capabilities,
-	on_attach = require('nvchad.configs.lspconfig').on_attach,
+	-- capabilities = require('nvchad.configs.lspconfig').capabilities,
+	-- on_attach = require('nvchad.configs.lspconfig').on_attach,
 })
 
 vim.lsp.enable('autohotkey_lsp')
