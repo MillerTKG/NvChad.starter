@@ -1,5 +1,5 @@
 require('nvchad.configs.lspconfig').defaults()
-require('lspconfigs.autohotkey')
+require('lua.configs.lspconfigs.autohotkey')
 
 local servers = { 'html', 'cssls' }
 vim.lsp.enable(servers)
